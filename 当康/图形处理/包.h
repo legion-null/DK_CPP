@@ -13,6 +13,8 @@
 
 #include "颜色/颜色.h"
 
+#include "字体/字体.h"
+
 // 2D图形相关类
 #include "像素点2D/像素点2D.h"
 
