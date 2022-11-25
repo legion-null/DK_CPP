@@ -1,6 +1,5 @@
 #pragma once
 
-#include <图形处理/三角形2D/三角形2D.h>
 #include "图形/图形.h"
 
 #include "帧缓冲区/帧缓冲区.h"
@@ -9,7 +8,7 @@
 
 #include "屏幕/屏幕.h"
 
-#include "画笔2D/画笔2D.h"
+#include "画笔/画笔.h"
 
 #include "颜色/颜色.h"
 
