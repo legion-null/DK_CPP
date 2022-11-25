@@ -14,6 +14,8 @@
 
 #include "字体/字体.h"
 
+#include "图片/图片.h"
+
 // 2D图形相关类
 #include "像素点2D/像素点2D.h"
 

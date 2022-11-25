@@ -1,6 +1,6 @@
 #include "当康.h"
 
-#define	测试用例		图形处理_屏幕_SDL2_测试
+#define	测试用例		图形处理_图片_BMP_测试
 
 extern i32 测试用例(i32 参数个数, c8 **参数列表);
 
