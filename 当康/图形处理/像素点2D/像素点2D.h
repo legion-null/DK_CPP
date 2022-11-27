@@ -32,13 +32,13 @@
 	i32 获取x() 只读;
 	i32 获取y() 只读;
 
-	void 获取坐标(i32 &x, i32 &y) 只读;
+	void 获取位置(i32 &x, i32 &y) 只读;
 
 公开:
 	void 设置x(i32 x);
 	void 设置y(i32 y);
 
-	void 设置坐标(i32 x, i32 y);
+	void 设置位置(i32 x, i32 y);
 
 公开:
 	void 移动(i32 dx, i32 dy);
