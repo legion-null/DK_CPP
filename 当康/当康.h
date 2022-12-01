@@ -6,6 +6,8 @@
 #include "包装类/包.h"
 #include "开发者/包.h"
 
+#include "常用单例/包.h"
+
 #include "多线程/包.h"
 
 #include "模板容器/包.h"
