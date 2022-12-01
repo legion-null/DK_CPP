@@ -4,7 +4,11 @@
 #include "可迭代接口/可迭代接口.h"
 
 #include "容器/容器.hpp"
+
 #include "数组/数组.hpp"
 #include "链表/链表.hpp"
+#include "树/树.hpp"
+#include "有向图/有向图.hpp"
+
 #include "栈/栈.hpp"
 #include "队列/队列.hpp"
