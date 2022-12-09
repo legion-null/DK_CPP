@@ -1,6 +1,6 @@
 #pragma once
 
-#include <图形界面/鼠标/鼠标.h>
+#include "图形界面/鼠标/鼠标.h"
 
 命名空间 当康 {
 命名空间 图形界面 {

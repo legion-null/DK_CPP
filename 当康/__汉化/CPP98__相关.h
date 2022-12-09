@@ -10,6 +10,8 @@
 #define		虚函数		虚化
 #define		覆盖			override
 
+#define		最终			final
+
 #define		创建			new
 #define		删除			delete
 

@@ -6,8 +6,6 @@
 
 #include "画布/画布.h"
 
-#include "屏幕/屏幕.h"
-
 #include "画笔/画笔.h"
 
 #include "颜色/颜色.h"

@@ -269,7 +269,7 @@
 		i32 b :5;
 	}__attribute__ ((packed));
 
-	结构体 RGB888 {
+	结构体 RGB888 { // 默认数据类型
 		i8 :8;
 		i8 r;
 		i8 g;
@@ -316,6 +316,37 @@
 公开:
 	i32 获取颜色值() 只读;
 	void 设置颜色值(i32 颜色值);
+
+公开:
+	u8 获取R();
+	u8 获取G();
+	u8 获取B();
+
+	void 获取RGB(u8 &R, u8 &G, u8 &B);
+
+公开:
+	void 设置R(u8 R);
+	void 设置G(u8 G);
+	void 设置B(u8 B);
+
+	void 设置RGB(u8 R, u8 G, u8 B);
+
+公开:
+	f32 获取r();
+	f32 获取g();
+	f32 获取b();
+
+	void 获取rgb(f32 &r, f32 &g, f32 &b);
+
+公开:
+	void 设置r(f32 r);
+	void 设置g(f32 g);
+	void 设置b(f32 b);
+
+	void 设置rgb(f32 r, f32 g, f32 b);
+
+公开:
+
 }
 ;
 

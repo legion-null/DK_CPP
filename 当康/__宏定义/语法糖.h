@@ -5,6 +5,7 @@
 // 语法糖
 #define 	抽象类				类
 #define 	接口类				类
+#define		单例类				类
 #define 	模板类				类
 
 #define 	继承					公开
