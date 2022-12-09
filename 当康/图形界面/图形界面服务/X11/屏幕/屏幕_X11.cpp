@@ -6,20 +6,12 @@
 
 引入 当康::图形处理;
 
-#include <X11/Xlib.h>
+#include "X11图形界面服务相关.h"
 
 命名空间 当康 {
 命名空间 图形界面 {
 
 类定义(当康::图形界面::屏幕_X11)
-
-类 XLib数据 {
-公开:
-	Display *显示设备;
-	Window 窗口;
-	GC 图形上下文;
-	XImage *帧缓冲区;
-};
 
 屏幕_X11& 屏幕_X11::构造() {
 
@@ -27,7 +19,7 @@
 }
 
 void 屏幕_X11::析构() {
-	::XCloseDisplay(xlib->显示设备);
+	::XCloseDisplay(X11屏幕->显示设备);
 }
 
 屏幕_X11& 屏幕_X11::构造(
@@ -36,20 +28,20 @@ void 屏幕_X11::析构() {
 
 	屏幕::构造(宽度, 高度, 像素色深, 方向);
 
-	xlib = 创建 XLib数据;
+	X11屏幕 = 创建 X11屏幕相关数据;
 
-	xlib->显示设备 = ::XOpenDisplay(0);
+	X11屏幕->显示设备 = ::XOpenDisplay(0);
 
-	xlib->窗口 = ::XCreateSimpleWindow(xlib->显示设备, DefaultRootWindow(xlib->显示设备), 0, 0, 宽度, 高度, //
-	1, BlackPixel(xlib->显示设备, 0), WhitePixel(xlib->显示设备, 0));
+	X11屏幕->窗口 = ::XCreateSimpleWindow(X11屏幕->显示设备, DefaultRootWindow(X11屏幕->显示设备), 0, 0, 宽度, 高度, //
+	1, BlackPixel(X11屏幕->显示设备, 0), WhitePixel(X11屏幕->显示设备, 0));
 
-	::XStoreName(xlib->显示设备, xlib->窗口, 屏幕名称.获取文本());
+	::XStoreName(X11屏幕->显示设备, X11屏幕->窗口, 屏幕名称.获取文本());
 
-	xlib->图形上下文 = DefaultGC(xlib->显示设备, DefaultScreen(xlib->显示设备));
-	xlib->帧缓冲区 = ::XCreateImage(xlib->显示设备, DefaultVisual(xlib->显示设备, DefaultScreen(xlib->显示设备)), DefaultDepth(xlib->显示设备, DefaultScreen(xlib->显示设备)), ZPixmap, 0, (c8*) 帧缓冲, 宽度, 高度, 像素色深, 0);
+	X11屏幕->图形上下文 = DefaultGC(X11屏幕->显示设备, DefaultScreen(X11屏幕->显示设备));
+	X11屏幕->帧缓冲区 = ::XCreateImage(X11屏幕->显示设备, DefaultVisual(X11屏幕->显示设备, DefaultScreen(X11屏幕->显示设备)), DefaultDepth(X11屏幕->显示设备, DefaultScreen(X11屏幕->显示设备)), ZPixmap, 0, (c8*) 帧缓冲, 宽度, 高度, 像素色深, 0);
 
-	XMapWindow(xlib->显示设备, xlib->窗口);
-	XFlush(xlib->显示设备);
+	XMapWindow(X11屏幕->显示设备, X11屏幕->窗口);
+	XFlush(X11屏幕->显示设备);
 
 	返回 本体;
 }
@@ -70,8 +62,8 @@ void 屏幕_X11::析构() {
 
 void 屏幕_X11::刷新矩形区域(
         i32 x0, i32 y0, i32 宽度, i32 高度) {
-	::XPutImage(xlib->显示设备, xlib->窗口, xlib->图形上下文, xlib->帧缓冲区, x0, y0, 0, 0, 宽度, 高度);
-	::XFlush(xlib->显示设备);
+	::XPutImage(X11屏幕->显示设备, X11屏幕->窗口, X11屏幕->图形上下文, X11屏幕->帧缓冲区, x0, y0, 0, 0, 宽度, 高度);
+	::XFlush(X11屏幕->显示设备);
 }
 
 }

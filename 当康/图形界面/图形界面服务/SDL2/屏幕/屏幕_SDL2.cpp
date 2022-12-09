@@ -6,32 +6,20 @@
 
 引入 当康::图形处理;
 
-#include <SDL2/SDL.h>
+#include "SDL2图形界面服务相关.h"
 
 命名空间 当康 {
 命名空间 图形界面 {
 
 类定义(当康::图形界面::屏幕_SDL2)
 
-类 SDL2数据 {
-公开:
-	SDL_Window *窗口;
-	SDL_Surface *图层;
-	u8 *帧缓冲;
-	u8 **行缓冲;
-};
-
 屏幕_SDL2& 屏幕_SDL2::构造() {
-	日志::格式化打印日志(日志::调试信息, "屏幕_SDL2& 屏幕_SDL2::构造()\n");
-
-	日志::格式化打印日志(日志::调试信息, "完成 屏幕_SDL2& 屏幕_SDL2::构造()\n");
-
-	返回 本体;
+	返回 构造("SDL2_液晶屏模拟器 作者:legion", 800, 600, 32, 图形::不旋转);
 }
 
 void 屏幕_SDL2::析构() {
-	如果 (SDL2 != 空指针)
-		删除 SDL2;
+	if (SDL2屏幕 != 空指针)
+		删除 SDL2屏幕;
 }
 
 屏幕_SDL2& 屏幕_SDL2::构造(只读 基础类::字符串 &屏幕名称, i32 宽度, i32 高度, i32 像素色深, 图形::显示方向 方向) {
@@ -41,23 +29,29 @@ void 屏幕_SDL2::析构() {
 
 	本元->屏幕名称 = 屏幕名称;
 
-	SDL2 = 创建 SDL2数据;
+	if (SDL2屏幕 != 空指针)
+		SDL2屏幕 = 创建 SDL2屏幕相关数据;
 
 	::SDL_Init(SDL_INIT_VIDEO);
 
-	SDL2->窗口 = ::SDL_CreateWindow(本元->屏幕名称.获取文本(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 宽度, 高度,	SDL_WINDOW_SHOWN);
-	SDL2->图层 = SDL_GetWindowSurface((SDL_Window*) SDL2->窗口);
+	SDL2屏幕->窗口 = ::SDL_CreateWindow(本元->屏幕名称.获取文本(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 宽度, 高度, SDL_WINDOW_SHOWN);
+	SDL2屏幕->图层 = SDL_GetWindowSurface((SDL_Window*) SDL2屏幕->窗口);
 
 	// 缓冲区映射
-	SDL2->帧缓冲 = (u8*) (SDL2->图层->pixels);
-	SDL2->行缓冲 = 创建 u8*[本元->高度];
+	SDL2屏幕->帧缓冲 = (u8*) (SDL2屏幕->图层->pixels);
+	SDL2屏幕->行缓冲 = 创建 u8*[本元->高度];
 
-	循环 (i32 i = 0; i < 本元->高度; i++)
-		SDL2->行缓冲[i] = &(SDL2->帧缓冲[行缓冲区大小 * i]);
+	for (i32 i = 0; i < 本元->高度; i++)
+		SDL2屏幕->行缓冲[i] = &(SDL2屏幕->帧缓冲[行缓冲区大小 * i]);
 
 	日志::格式化打印日志(日志::调试信息, "完成 屏幕_SDL2& 屏幕_SDL2::构造(只读 基础类::字符串 &屏幕名称 = \"%s\", i32 宽度 = %d, i32 高度 = %d, i32 像素色深 = %d, 图形::显示方向 方向 = %d)\n", 屏幕名称.获取文本(), 宽度, 高度, 像素色深, 方向);
 
 	返回 本体;
+}
+
+屏幕_SDL2& 屏幕_SDL2::构造(图形界面服务_SDL2 *服务) {
+	本元->SDL2屏幕 = &((SDL2图形界面服务相关数据)(服务->SDL2服务->屏幕));
+	返回 构造("SDL2_液晶屏模拟器 作者:legion", 800, 600, 32, 图形::不旋转);
 }
 
 屏幕_SDL2& 屏幕_SDL2::复制构造(只读 屏幕_SDL2 &其他实例) {
@@ -70,12 +64,12 @@ void 屏幕_SDL2::析构() {
 
 void 屏幕_SDL2::刷新矩形区域(i32 x0, i32 y0, i32 宽度, i32 高度) {
 
-	::SDL_UpdateWindowSurface(SDL2->窗口);
+	::SDL_UpdateWindowSurface(SDL2屏幕->窗口);
 }
 
 void 屏幕_SDL2::刷新() {
-	复制(帧缓冲, SDL2->帧缓冲, 缓冲区大小);
-	::SDL_UpdateWindowSurface(SDL2->窗口);
+	复制(帧缓冲, SDL2屏幕->帧缓冲, 缓冲区大小);
+	::SDL_UpdateWindowSurface(SDL2屏幕->窗口);
 }
 
 }
