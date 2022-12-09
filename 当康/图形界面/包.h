@@ -1,8 +1,11 @@
 #pragma once
 
 // 设备相关
+
+// 显示设备抽象
 #include "屏幕/屏幕.h"
 
+// 输入设备和事件相关
 #include "输入事件/输入事件.h"
 #include "输入设备/输入设备.h"
 

@@ -17,3 +17,7 @@
 #include "图形处理/包.h"
 
 #include "图形界面/包.h"
+
+#include "文件类/包.h"
+
+#include "网络类/包.h"
