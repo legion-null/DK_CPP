@@ -29,15 +29,24 @@
 
 // 组件相关
 #include "组件/组件.h"
-
 #include "容器/容器.h"
 
 #include "标签/标签.h"
+#include "图片框/图片框.h"
+#include "画板/画板.h"
 
 #include "抽象按钮/抽象按钮.h"
-
 #include "普通按钮/普通按钮.h"
+#include "图片按钮/图片按钮.h"
+#include "单选框/单选框.h"
+#include "复选框/复选框.h"
+#include "进度条/进度条.h"
 
+#include "滚动条/滚动条.h"
+
+#include "面板/面板.h"
+
+// 其他
 #include "风格/风格.h"
 
 
