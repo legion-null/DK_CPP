@@ -12,6 +12,11 @@
 类定义(当康::图形界面::鼠标_SDL2)
 
 鼠标_SDL2& 鼠标_SDL2::构造() {
+	if (SDL2事件 == 空指针)
+		SDL2事件 = 创建 SDL2事件相关数据;
+
+	::SDL_Init(SDL_INIT_EVENTS);
+
 	返回 本体;
 }
 
@@ -20,7 +25,8 @@ void 鼠标_SDL2::析构() {
 }
 
 鼠标_SDL2& 鼠标_SDL2::构造(图形界面服务_SDL2 *服务) {
-	返回 本体;
+	SDL2事件 = (SDL2事件相关数据*) &(服务->SDL2服务->事件);
+	返回 构造();
 }
 
 鼠标_SDL2& 鼠标_SDL2::复制构造(只读 鼠标_SDL2 &其他实例) {
@@ -36,49 +42,58 @@ void 鼠标_SDL2::析构() {
 }
 
 输入事件* 鼠标_SDL2::上报输入事件() {
-	SDL_Event e;
+	SDL_Event &e = SDL2事件->事件;
 	鼠标事件 *事件 = 创建 鼠标事件();
 
 	::SDL_PollEvent(&e);
 
-	/*
-	 // 更新事件
-	 switch (e.type) {
-	 case SDL_MOUSEMOTION:
-	 事件->类型 = 鼠标事件::移动;
-	 本元->位置.设置位置(e.motion.x, e.motion.y);
-	 break;
-	 case SDL_MOUSEBUTTONDOWN:
-	 switch (e.button.button) {
-	 case 0:
-	 本元->左键按下 = 真;
-	 break;
-	 case 1:
-	 本元->右键按下 = 真;
-	 break;
-	 }
-	 事件->类型 = 鼠标事件::按下;
-	 break;
-	 case SDL_MOUSEBUTTONUP:
-	 switch (e.button.button) {
-	 case 0:
-	 本元->左键按下 = 假;
-	 break;
-	 case 1:
-	 本元->右键按下 = 假;
-	 break;
-	 }
-	 事件->类型 = 鼠标事件::释放;
-	 break;
-	 case SDL_MOUSEWHEEL:
-	 事件->类型 = 鼠标事件::滚动;
-	 break;
-	 default:
-	 返回 0;
-	 }
+	if (e.type == SDL_MOUSEMOTION) {
+		当前状态.位置.设置位置(e.motion.x, e.motion.y);
+		if (当前状态.左键按下 == 假 且 当前状态.中键按下 == 假 且 当前状态.右键按下 == 假) {
+			当前状态.类型 = 鼠标事件::移动;
+		} else {
+			当前状态.类型 = 鼠标事件::拖动;
+		}
+	} else if (e.type == SDL_MOUSEBUTTONDOWN) {
+		if (e.button.button == 1) {
+			当前状态.左键按下 = 真;
+		} else if (e.button.button == 2) {
+			当前状态.中键按下 = 真;
+		} else if (e.button.button == 3) {
+			当前状态.右键按下 = 真;
+		}
+		当前状态.类型 = 鼠标事件::按下;
+	} else if (e.type == SDL_MOUSEBUTTONUP) {
+		if (e.button.button == 1) {
+			当前状态.左键按下 = 假;
+		} else if (e.button.button == 2) {
+			当前状态.中键按下 = 假;
+		} else if (e.button.button == 3) {
+			当前状态.右键按下 = 假;
+		}
+		if (当前状态.类型 == 鼠标事件::释放) {
+			当前状态.类型 = 鼠标事件::点击;
+		} else {
+			当前状态.类型 = 鼠标事件::释放;
+		}
+	} else if (e.type == SDL_MOUSEWHEEL) {
+		当前状态.类型 = 鼠标事件::滚动;
+	} else {
+		删除 事件;
+		返回 空指针;
+	}
 
-	 事件->位置 = 本元->位置;
-	 */
+	// 复制当前状态到事件
+	事件->设置当前状态(当前状态);
+
+	// 打印当前状态
+	日志::格式化打印日志(日志::一般信息, "位置(%4d,%4d) 左键按下:%s 中间按下:%s 右键按下:%s %s\n", //
+	事件->获取x(), 事件->获取y(), //
+	事件->左键按下() ? "真" : "假", //
+	事件->中键按下() ? "真" : "假", //
+	事件->右键按下() ? "真" : "假", //
+	鼠标事件::事件类型转字符串(事件->获取事件类型()).获取文本());
+
 	返回 事件;
 }
 

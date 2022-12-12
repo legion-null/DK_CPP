@@ -12,16 +12,16 @@
 	SDL_Surface *图层;
 	u8 *帧缓冲;
 	u8 **行缓冲;
-}__attribute__((packed)) SDL2屏幕相关数据;
+}SDL2屏幕相关数据;
 
 类型别名 结构体 SDL2事件相关数据 {
 	SDL_Event 事件;
-}__attribute__((packed)) SDL2事件相关数据;
+}SDL2事件相关数据;
 
 类型别名 结构体 SDL2图形界面服务相关数据 {
 	SDL2屏幕相关数据 屏幕;
 	SDL2事件相关数据 事件;
-}__attribute__((packed)) SDL2图形界面服务相关数据;
+}SDL2图形界面服务相关数据;
 
 }
 }

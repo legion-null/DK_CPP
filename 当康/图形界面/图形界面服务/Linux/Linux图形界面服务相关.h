@@ -2,7 +2,8 @@
 
 #include "定义.h"
 
-//#include <Linux.h>
+//#include <linux/input.h>
+//#include <linux/input-event-codes.h>
 
 命名空间 当康 {
 命名空间 图形界面 {

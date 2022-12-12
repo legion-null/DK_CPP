@@ -31,5 +31,19 @@ void 键盘_SDL2::析构() {
 	返回 本体;
 }
 
+输入事件* 键盘_SDL2::上报输入事件() {
+	SDL_Event &e = SDL2事件->事件;
+	键盘事件 *事件 = 创建 键盘事件();
+
+	::SDL_PollEvent(&e);
+
+	if (e.type == SDL_KEYDOWN) {
+
+	} else if (e.type == SDL_KEYUP) {
+
+	}
+}
+
 }
 }
+

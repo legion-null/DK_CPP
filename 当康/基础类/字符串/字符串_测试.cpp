@@ -7,8 +7,8 @@
 引入 当康::开发者;
 
 i32 基础类_字符串_测试(i32 参数个数, c8 **参数列表) {
-	c8 *a = "HelloWorldWorldHelloWorld";
-	c8 *b = "World";
+	只读 c8 *a = "HelloWorldWorldHelloWorld";
+	只读 c8 *b = "World";
 	c8* c = 字符串::替换字符串(a, "Wo", "你好");
 
 	日志::格式化打印日志(日志::一般信息, "%d.\n",字符串::查找字符串(a, b));

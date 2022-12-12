@@ -1,6 +1,6 @@
 #include "当康.h"
 
-#include <GL/gl.h>
+//#include <GL/gl.h>
 
 引入 当康::基础类;
 引入 当康::包装类;
