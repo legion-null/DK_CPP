@@ -19,6 +19,10 @@ void 鼠标_SDL2::析构() {
 
 }
 
+鼠标_SDL2& 鼠标_SDL2::构造(图形界面服务_SDL2 *服务) {
+	返回 本体;
+}
+
 鼠标_SDL2& 鼠标_SDL2::复制构造(只读 鼠标_SDL2 &其他实例) {
 	抛出 异常("鼠标_SDL2:复制构造方法不存在！\n"); // 默认操作，实现复制构造方法需将其删除
 
@@ -38,43 +42,43 @@ void 鼠标_SDL2::析构() {
 	::SDL_PollEvent(&e);
 
 	/*
-	// 更新事件
-	switch (e.type) {
-	case SDL_MOUSEMOTION:
-		事件->类型 = 鼠标事件::移动;
-		本元->位置.设置位置(e.motion.x, e.motion.y);
-		break;
-	case SDL_MOUSEBUTTONDOWN:
-		switch (e.button.button) {
-		case 0:
-			本元->左键按下 = 真;
-			break;
-		case 1:
-			本元->右键按下 = 真;
-			break;
-		}
-		事件->类型 = 鼠标事件::按下;
-		break;
-	case SDL_MOUSEBUTTONUP:
-		switch (e.button.button) {
-		case 0:
-			本元->左键按下 = 假;
-			break;
-		case 1:
-			本元->右键按下 = 假;
-			break;
-		}
-		事件->类型 = 鼠标事件::释放;
-		break;
-	case SDL_MOUSEWHEEL:
-		事件->类型 = 鼠标事件::滚动;
-		break;
-	default:
-		返回 0;
-	}
+	 // 更新事件
+	 switch (e.type) {
+	 case SDL_MOUSEMOTION:
+	 事件->类型 = 鼠标事件::移动;
+	 本元->位置.设置位置(e.motion.x, e.motion.y);
+	 break;
+	 case SDL_MOUSEBUTTONDOWN:
+	 switch (e.button.button) {
+	 case 0:
+	 本元->左键按下 = 真;
+	 break;
+	 case 1:
+	 本元->右键按下 = 真;
+	 break;
+	 }
+	 事件->类型 = 鼠标事件::按下;
+	 break;
+	 case SDL_MOUSEBUTTONUP:
+	 switch (e.button.button) {
+	 case 0:
+	 本元->左键按下 = 假;
+	 break;
+	 case 1:
+	 本元->右键按下 = 假;
+	 break;
+	 }
+	 事件->类型 = 鼠标事件::释放;
+	 break;
+	 case SDL_MOUSEWHEEL:
+	 事件->类型 = 鼠标事件::滚动;
+	 break;
+	 default:
+	 返回 0;
+	 }
 
-	事件->位置 = 本元->位置;
-*/
+	 事件->位置 = 本元->位置;
+	 */
 	返回 事件;
 }
 
