@@ -31,6 +31,7 @@
 #include "组件/组件.h"
 #include "容器/容器.h"
 
+// 公共组件
 #include "标签/标签.h"
 #include "图片框/图片框.h"
 #include "画板/画板.h"
@@ -44,7 +45,12 @@
 
 #include "滚动条/滚动条.h"
 
+// 容器
 #include "面板/面板.h"
+
+// 对话框
+
+// 布局管理器
 
 // 其他
 #include "风格/风格.h"
