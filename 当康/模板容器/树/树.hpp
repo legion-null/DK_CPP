@@ -4,43 +4,43 @@
 
 #include "模板容器/链表/链表.hpp"
 
-命名空间 当康 {
-命名空间 模板容器 {
+namespace 当康 {
+namespace 模板容器 {
 
-模板<类 E>
-模板类 树: 继承 模板容器::容器<E> {
+template<class E>
+class 树: public 模板容器::容器<E> {
 模板声明(树)
 
-保护:
-	模板<类 E1>
-	模板类 节点 {
+protected:
+	template<class E1>
+	class 节点 {
 
-	公开:
-		节点<E1> *父节点 = 空指针;
+	public:
+		节点<E1> *父节点 = nullptr;
 		链表<节点<E1>*> 子节点;
 		E1 成员;
 
-	公开:
-		节点(只读 E1& 成员){
-			本元->成员 = 成员;
+	public:
+		节点(const E1 &成员) {
+			this->成员 = 成员;
 		}
 	};
 
-公开:
-	树& 构造(){
-		返回 本体;
+public:
+	树& 构造() {
+		return (*this);
 	}
-	void 析构(){
+	void 析构() {
 
 	}
 
-公开:
-	树& 复制构造(只读 树 &其他实例){
-		返回 本体;
+public:
+	树& 复制构造(const 树 &其他实例) {
+		return (*this);
 	}
 
-	树& 移动构造(树 &&其他实例){
-		返回 本体;
+	树& 移动构造(树 &&其他实例) {
+		return (*this);
 	}
 }
 ;

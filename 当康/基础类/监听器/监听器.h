@@ -2,10 +2,10 @@
 
 #include "基础类/接口/接口.h"
 
-命名空间 当康 {
-命名空间 基础类 {
+namespace 当康 {
+namespace 基础类 {
 
-接口类 监听器: 虚继承 基础类::接口 {
+class 监听器: virtual public 基础类::接口 {
 接口声明(监听器)
 
 };

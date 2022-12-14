@@ -1,18 +1,18 @@
 #include "当康.h"
 
-引入 当康;
+using namespace 当康;
 
-引入 当康::基础类;
-引入 当康::包装类;
-引入 当康::开发者;
+using namespace 当康::基础类;
+using namespace 当康::包装类;
+using namespace 当康::开发者;
 
-引入 当康::图形界面;
+using namespace 当康::图形界面;
 
 i32 图形界面_图形界面服务_SDL2_测试(i32 参数个数, c8 **参数列表) {
 	(void) 参数个数;
 	(void) 参数列表;
 
-	图形界面服务 *服务 = 创建 图形界面服务_SDL2();
+	图形界面服务 *服务 = new 图形界面服务_SDL2();
 
-	返回 服务->启动();
+	return 服务->启动();
 }

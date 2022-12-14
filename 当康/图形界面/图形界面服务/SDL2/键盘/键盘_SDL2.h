@@ -2,25 +2,25 @@
 
 #include "图形界面/键盘/键盘.h"
 
-命名空间 当康 {
-命名空间 图形界面 {
+namespace 当康 {
+namespace 图形界面 {
 
-类 键盘_SDL2: 继承 键盘 {
+class 键盘_SDL2: public 键盘 {
 类声明(键盘_SDL2)
 
-保护:
-	结构体 SDL2事件相关数据 *SDL2事件 = 空指针;
+protected:
+	struct SDL2事件相关数据 *SDL2事件 = nullptr;
 
-公开:
+public:
 	键盘_SDL2& 构造();
 	void 析构();
 
-公开:
-	键盘_SDL2& 复制构造(只读 键盘_SDL2 &其他实例);
+public:
+	键盘_SDL2& 复制构造(const 键盘_SDL2 &其他实例);
 	键盘_SDL2& 移动构造(键盘_SDL2 &&其他实例);
 
-保护:
-	虚函数 输入事件* 上报输入事件() 覆盖;
+protected:
+	virtual 输入事件* 上报输入事件() override;
 
 };
 

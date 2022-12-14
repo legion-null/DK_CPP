@@ -1,23 +1,23 @@
 #include "当康.h"
 
-引入 当康::基础类;
-引入 当康::包装类;
-引入 当康::开发者;
+using namespace 当康::基础类;
+using namespace 当康::包装类;
+using namespace 当康::开发者;
 
 #include "../SDL2图形界面服务相关.h"
 
-命名空间 当康 {
-命名空间 图形界面 {
+namespace 当康 {
+namespace 图形界面 {
 
 类定义(当康::图形界面::鼠标_SDL2)
 
 鼠标_SDL2& 鼠标_SDL2::构造() {
-	if (SDL2事件 == 空指针)
-		SDL2事件 = 创建 SDL2事件相关数据;
+	if (SDL2事件 == nullptr)
+		SDL2事件 = new SDL2事件相关数据;
 
 	::SDL_Init(SDL_INIT_EVENTS);
 
-	返回 本体;
+	return (*this);
 }
 
 void 鼠标_SDL2::析构() {
@@ -26,50 +26,50 @@ void 鼠标_SDL2::析构() {
 
 鼠标_SDL2& 鼠标_SDL2::构造(图形界面服务_SDL2 *服务) {
 	SDL2事件 = (SDL2事件相关数据*) &(服务->SDL2服务->事件);
-	返回 构造();
+	return 构造();
 }
 
-鼠标_SDL2& 鼠标_SDL2::复制构造(只读 鼠标_SDL2 &其他实例) {
-	抛出 异常("鼠标_SDL2:复制构造方法不存在！\n"); // 默认操作，实现复制构造方法需将其删除
+鼠标_SDL2& 鼠标_SDL2::复制构造(const 鼠标_SDL2 &其他实例) {
+	throw 异常("鼠标_SDL2:复制构造方法不存在！\n"); // 默认操作，实现复制构造方法需将其删除
 
-	返回 本体;
+	return (*this);
 }
 
 鼠标_SDL2& 鼠标_SDL2::移动构造(鼠标_SDL2 &&其他实例) {
-	抛出 异常("鼠标_SDL2:移动构造方法不存在！\n"); // 默认操作，实现移动构造方法需将其删除
+	throw 异常("鼠标_SDL2:移动构造方法不存在！\n"); // 默认操作，实现移动构造方法需将其删除
 
-	返回 本体;
+	return (*this);
 }
 
 输入事件* 鼠标_SDL2::上报输入事件() {
 	SDL_Event &e = SDL2事件->事件;
-	鼠标事件 *事件 = 创建 鼠标事件();
+	鼠标事件 *事件 = new 鼠标事件();
 
 	::SDL_PollEvent(&e);
 
 	if (e.type == SDL_MOUSEMOTION) {
 		当前状态.位置.设置位置(e.motion.x, e.motion.y);
-		if (当前状态.左键按下 == 假 且 当前状态.中键按下 == 假 且 当前状态.右键按下 == 假) {
+		if (当前状态.左键按下 == false and 当前状态.中键按下 == false and 当前状态.右键按下 == false) {
 			当前状态.类型 = 鼠标事件::移动;
 		} else {
 			当前状态.类型 = 鼠标事件::拖动;
 		}
 	} else if (e.type == SDL_MOUSEBUTTONDOWN) {
 		if (e.button.button == 1) {
-			当前状态.左键按下 = 真;
+			当前状态.左键按下 = true;
 		} else if (e.button.button == 2) {
-			当前状态.中键按下 = 真;
+			当前状态.中键按下 = true;
 		} else if (e.button.button == 3) {
-			当前状态.右键按下 = 真;
+			当前状态.右键按下 = true;
 		}
 		当前状态.类型 = 鼠标事件::按下;
 	} else if (e.type == SDL_MOUSEBUTTONUP) {
 		if (e.button.button == 1) {
-			当前状态.左键按下 = 假;
+			当前状态.左键按下 = false;
 		} else if (e.button.button == 2) {
-			当前状态.中键按下 = 假;
+			当前状态.中键按下 = false;
 		} else if (e.button.button == 3) {
-			当前状态.右键按下 = 假;
+			当前状态.右键按下 = false;
 		}
 		if (当前状态.类型 == 鼠标事件::释放) {
 			当前状态.类型 = 鼠标事件::点击;
@@ -79,8 +79,8 @@ void 鼠标_SDL2::析构() {
 	} else if (e.type == SDL_MOUSEWHEEL) {
 		当前状态.类型 = 鼠标事件::滚动;
 	} else {
-		删除 事件;
-		返回 空指针;
+		delete 事件;
+		return nullptr;
 	}
 
 	// 复制当前状态到事件
@@ -94,7 +94,7 @@ void 鼠标_SDL2::析构() {
 	事件->右键按下() ? "真" : "假", //
 	鼠标事件::事件类型转字符串(事件->获取事件类型()).获取文本());
 
-	返回 事件;
+	return 事件;
 }
 
 }

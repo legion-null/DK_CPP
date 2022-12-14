@@ -4,56 +4,56 @@
 
 #include "图形处理/像素点2D/像素点2D.h"
 
-命名空间 当康 {
-命名空间 图形处理 {
+namespace 当康 {
+namespace 图形处理 {
 
-抽象类 图形2D: 继承 基础类::对象 {
+class 图形2D: public 基础类::对象 {
 抽象类声明(图形2D)
 
-保护:
+protected:
 	像素点2D 位置;
-	像素点2D *顶点 = 空指针;
+	像素点2D *顶点 = nullptr;
 
-公开:
+public:
 	图形2D(i32 x, i32 y) {
 		构造(x, y);
 	}
 
-	图形2D(只读 像素点2D &位置) {
+	图形2D(const 像素点2D &位置) {
 		构造(位置);
 	}
 
-公开:
+public:
 	图形2D& 构造();
 	void 析构();
 
-公开:
+public:
 	图形2D& 构造(i32 x, i32 y);
-	图形2D& 构造(只读 像素点2D &位置);
+	图形2D& 构造(const 像素点2D &位置);
 
-公开:
-	图形2D& 复制构造(只读 图形2D &其他实例);
+public:
+	图形2D& 复制构造(const 图形2D &其他实例);
 	图形2D& 移动构造(图形2D &&其他实例);
 
-公开:
-	i32 获取x() 只读;
-	i32 获取y() 只读;
-	void 获取位置(i32 &x, i32 &y) 只读;
-	只读 像素点2D& 获取位置() 只读;
+public:
+	i32 获取x() const;
+	i32 获取y() const;
+	void 获取位置(i32 &x, i32 &y) const;
+	const 像素点2D& 获取位置() const;
 
 	void 设置x(i32 x);
 	void 设置y(i32 y);
 	void 设置位置(i32 x, i32 y);
-	void 设置位置(只读 像素点2D &位置);
+	void 设置位置(const 像素点2D &位置);
 
-公开:
-	只读 像素点2D& 获取顶点(i32 序号) 只读;
+public:
+	const 像素点2D& 获取顶点(i32 序号) const;
 
-公开:
-	虚函数 f64 计算面积() = 0;
+public:
+	virtual f64 计算面积() = 0;
 
-	虚函数 void 获取外接矩形(i32 &x, i32 &y, i32 &宽度, i32 &高度) 只读 = 0;
-	虚函数 void 设置外接矩形(i32 x, i32 y, i32 宽度, i32 高度) = 0;
+	virtual void 获取外接矩形(i32 &x, i32 &y, i32 &宽度, i32 &高度) const = 0;
+	virtual void 设置外接矩形(i32 x, i32 y, i32 宽度, i32 高度) = 0;
 };
 
 }

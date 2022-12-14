@@ -3,18 +3,18 @@
 #include <unistd.h>
 #include <pthread.h>
 
-引入 当康::基础类;
-引入 当康::包装类;
-引入 当康::开发者;
+using namespace 当康::基础类;
+using namespace 当康::包装类;
+using namespace 当康::开发者;
 
-命名空间 当康 {
-命名空间 多线程 {
+namespace 当康 {
+namespace 多线程 {
 
 类定义(当康::多线程::线程)
 
-类型别名 结构体 线程数据 {
+typedef struct 线程数据 {
 	pthread_t 线程ID;
-}__attribute__ ((packed)) 线程数据;
+} 线程数据;
 
 void 线程::睡眠(u32 秒数) {
 	::sleep(秒数);
@@ -27,12 +27,12 @@ void 线程::挂起() {
 void* 线程::线程运行函数(void *参数) {
 	线程 *此线程 = (线程*) 参数;
 	此线程->运行();
-	返回 空指针;
+	return nullptr;
 }
 
 线程& 线程::构造() {
-	构造(本元);
-	返回 本体;
+	构造(this);
+	return (*this);
 }
 
 void 线程::析构() {
@@ -40,48 +40,48 @@ void 线程::析构() {
 }
 
 线程& 线程::构造(线程接口 *任务) {
-	Pthread数据 = 创建 线程数据;
-	本元->任务 = 任务;
-	返回 本体;
+	Pthread数据 = new 线程数据;
+	this->任务 = 任务;
+	return (*this);
 }
 
-线程& 线程::复制构造(只读 线程 &其他实例) {
-	抛出 异常("线程:复制构造方法不存在！\n"); // 默认操作，实现复制构造方法需将其删除
+线程& 线程::复制构造(const 线程 &其他实例) {
+	throw 异常("线程:复制构造方法不存在！\n"); // 默认操作，实现复制构造方法需将其删除
 
-	返回 本体;
+	return (*this);
 }
 
 线程& 线程::移动构造(线程 &&其他实例) {
-	抛出 异常("线程:移动构造方法不存在！\n"); // 默认操作，实现移动构造方法需将其删除
+	throw 异常("线程:移动构造方法不存在！\n"); // 默认操作，实现移动构造方法需将其删除
 
-	返回 本体;
+	return (*this);
 }
 
 i32 线程::启动() {
-	返回 ::pthread_create(&(Pthread数据->线程ID), 空指针, 线程::线程运行函数, (void*) 本元);
+	return ::pthread_create(&(Pthread数据->线程ID), nullptr, 线程::线程运行函数, (void*) this);
 }
 
 i32 线程::等待() {
-	返回 ::pthread_join(Pthread数据->线程ID, 空指针);
+	return ::pthread_join(Pthread数据->线程ID, nullptr);
 }
 
 i32 线程::分离() {
-	返回 ::pthread_detach(Pthread数据->线程ID);
+	return ::pthread_detach(Pthread数据->线程ID);
 }
 
 i32 线程::恢复() {
-	返回 0;
+	return 0;
 }
 
 i32 线程::取消() {
-	返回 ::pthread_cancel(Pthread数据->线程ID);
+	return ::pthread_cancel(Pthread数据->线程ID);
 }
 
 void* 线程::运行() {
-	if (任务 == 空指针)
-		抛出 异常("");
+	if (任务 == nullptr)
+		throw 异常("");
 
-	返回 任务->运行();
+	return 任务->运行();
 }
 
 }

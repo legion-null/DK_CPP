@@ -4,54 +4,54 @@
 
 #include "多线程/线程接口/线程接口.h"
 
-命名空间 当康 {
-命名空间 多线程 {
+namespace 当康 {
+namespace 多线程 {
 
-类 线程: 继承 基础类::对象, 虚继承 线程接口 {
+class 线程: public 基础类::对象, virtual public 线程接口 {
 类声明(线程)
 
-公开:
-	静态 void 睡眠(u32 秒数);
-	静态 void 挂起();
+public:
+	static void 睡眠(u32 秒数);
+	static void 挂起();
 
-保护:
-	静态 void* 线程运行函数(void *参数);
+protected:
+	static void* 线程运行函数(void *参数);
 
-保护:
-	类 线程数据 *Pthread数据 = 空指针;
-	线程接口 *任务 = 空指针;
+protected:
+	class 线程数据 *Pthread数据 = nullptr;
+	线程接口 *任务 = nullptr;
 
-保护:
+protected:
 	i8 可结合性 :1;
 
-公开:
+public:
 	线程(线程接口 *任务) {
 		构造(任务);
 	}
 
-公开:
+public:
 	线程& 构造();
 	void 析构();
 
-公开:
+public:
 	线程& 构造(线程接口 *任务);
 
-公开:
-	线程& 复制构造(只读 线程 &其他实例);
+public:
+	线程& 复制构造(const 线程 &其他实例);
 	线程& 移动构造(线程 &&其他实例);
 
-公开:
-	bool 可结合() 只读;
+public:
+	bool 可结合() const;
 
-公开:
+public:
 	i32 启动();
 	i32 等待();
 	i32 分离();
 	i32 恢复();
 	i32 取消();
 
-公开:
-	虚函数 void* 运行() 覆盖;
+public:
+	virtual void* 运行() override;
 
 };
 

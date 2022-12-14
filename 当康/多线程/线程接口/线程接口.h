@@ -2,14 +2,14 @@
 
 #include "基础类/接口/接口.h"
 
-命名空间 当康 {
-命名空间 多线程 {
+namespace 当康 {
+namespace 多线程 {
 
-接口类 线程接口: 虚继承 基础类::接口 {
+class 线程接口: virtual public 基础类::接口 {
 接口声明(线程接口)
 
-公开:
-	虚函数 void* 运行() = 0;
+public:
+	virtual void* 运行() = 0;
 };
 
 }

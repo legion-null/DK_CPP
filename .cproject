@@ -19,7 +19,7 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.cross.exe.debug.1217554896.470116585." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.cross.exe.debug.357135328" name="Cross GCC" nonInternalBuilderId="cdt.managedbuild.builder.gnu.cross" superClass="cdt.managedbuild.toolchain.gnu.cross.exe.debug">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.151308912" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
-							<builder buildPath="${workspace_loc:/当康__模板}/调试" id="cdt.managedbuild.builder.gnu.cross.1365114589" keepEnvironmentInBuildfile="false" name="GNU Make 构建器" parallelBuildOn="true" parallelizationNumber="unlimited" superClass="cdt.managedbuild.builder.gnu.cross"/>
+							<builder buildPath="${workspace_loc:/当康__模板}/调试" id="cdt.managedbuild.builder.gnu.cross.1365114589" keepEnvironmentInBuildfile="false" name="GNU Make 构建器" parallelBuildOn="true" parallelizationNumber="unlimited" stopOnErr="false" superClass="cdt.managedbuild.builder.gnu.cross"/>
 							<tool command="g++" id="cdt.managedbuild.tool.gnu.cross.c.compiler.1548697659" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.2025282884" name="优化级别" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.1864385908" name="调试级别" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
@@ -94,7 +94,7 @@
 					<folderInfo id="cdt.managedbuild.config.gnu.cross.exe.debug.1217554896.470116585.1591794074." name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.cross.exe.debug.904944869" name="Cross GCC" nonInternalBuilderId="cdt.managedbuild.builder.gnu.cross" superClass="cdt.managedbuild.toolchain.gnu.cross.exe.debug">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="cdt.managedbuild.targetPlatform.gnu.cross.531370452" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
-							<builder buildPath="${workspace_loc:/当康__模板}/发布" id="cdt.managedbuild.builder.gnu.cross.742955582" keepEnvironmentInBuildfile="false" name="GNU Make 构建器" parallelBuildOn="true" parallelizationNumber="unlimited" superClass="cdt.managedbuild.builder.gnu.cross"/>
+							<builder buildPath="${workspace_loc:/当康__模板}/发布" id="cdt.managedbuild.builder.gnu.cross.742955582" keepEnvironmentInBuildfile="false" name="GNU Make 构建器" parallelBuildOn="true" parallelizationNumber="unlimited" stopOnErr="false" superClass="cdt.managedbuild.builder.gnu.cross"/>
 							<tool command="g++" id="cdt.managedbuild.tool.gnu.cross.c.compiler.483853677" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.1007878299" name="优化级别" superClass="gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option defaultValue="gnu.c.debugging.level.max" id="gnu.c.compiler.option.debugging.level.289666961" name="调试级别" superClass="gnu.c.compiler.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>

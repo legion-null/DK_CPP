@@ -2,22 +2,22 @@
 
 #include <图形界面/鼠标/鼠标.h>
 
-命名空间 当康 {
-命名空间 图形界面 {
+namespace 当康 {
+namespace 图形界面 {
 
-类 鼠标_Linux: 继承 鼠标 {
+class 鼠标_Linux: public 鼠标 {
 类声明(鼠标_Linux)
 
-公开:
+public:
 	鼠标_Linux& 构造();
 	void 析构();
 
-公开:
-	鼠标_Linux& 复制构造(只读 鼠标_Linux &其他实例);
+public:
+	鼠标_Linux& 复制构造(const 鼠标_Linux &其他实例);
 	鼠标_Linux& 移动构造(鼠标_Linux &&其他实例);
 
-保护:
-	虚函数 输入事件* 上报输入事件() 覆盖;
+protected:
+	virtual 输入事件* 上报输入事件() override;
 };
 
 }

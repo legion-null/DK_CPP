@@ -2,33 +2,33 @@
 
 #include "图形界面/鼠标/鼠标.h"
 
-命名空间 当康 {
-命名空间 图形界面 {
+namespace 当康 {
+namespace 图形界面 {
 
-类 鼠标_SDL2: 继承 鼠标 {
+class 鼠标_SDL2: public 鼠标 {
 类声明(鼠标_SDL2)
 
-保护:
-	结构体 SDL2事件相关数据 *SDL2事件 = 空指针;
+protected:
+	struct SDL2事件相关数据 *SDL2事件 = nullptr;
 
-公开:
+public:
 	鼠标_SDL2(图形界面服务_SDL2 *服务) {
 		构造(服务);
 	}
 
-公开:
+public:
 	鼠标_SDL2& 构造();
 	void 析构();
 
-公开:
+public:
 	鼠标_SDL2& 构造(图形界面服务_SDL2 *服务);
 
-公开:
-	鼠标_SDL2& 复制构造(只读 鼠标_SDL2 &其他实例);
+public:
+	鼠标_SDL2& 复制构造(const 鼠标_SDL2 &其他实例);
 	鼠标_SDL2& 移动构造(鼠标_SDL2 &&其他实例);
 
-保护:
-	虚函数 输入事件* 上报输入事件() 覆盖;
+protected:
+	virtual 输入事件* 上报输入事件() override;
 
 };
 

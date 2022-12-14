@@ -2,29 +2,28 @@
 
 #include "基础类/对象/对象.h"
 
-命名空间 当康 {
-命名空间 常用单例 {
+namespace 当康 {
+namespace 常用单例 {
 
-单例类 系统: 继承 基础类::对象 {
+class 系统: public 基础类::对象 {
 单例声明(系统)
 
-公开:
-	静态 系统 *此系统;
+public:
+	static 系统 *此系统;
 
-公开:
+public:
 
-保护:
+protected:
 
-
-保护:
+protected:
 	系统& 构造();
 	void 析构();
 
-保护:
-	系统& 复制构造(只读 系统 &其他实例);
+protected:
+	系统& 复制构造(const 系统 &其他实例);
 	系统& 移动构造(系统 &&其他实例);
 
-公开:
+public:
 
 };
 

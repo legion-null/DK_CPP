@@ -4,41 +4,41 @@
 
 #include "模板容器/链表/链表.hpp"
 
-命名空间 当康 {
-命名空间 模板容器 {
+namespace 当康 {
+namespace 模板容器 {
 
-模板<类 E>
-模板类 有向图: 继承 模板容器::容器<E> {
+template<class E>
+class 有向图: public 模板容器::容器<E> {
 模板声明(有向图)
 
-保护:
-	模板<类 E1>
-	模板类 节点 {
-	公开:
+protected:
+	template<class E1>
+	class 节点 {
+	public:
 		链表<节点<E1>*> 入节点;
 		链表<节点<E1>*> 出节点;
 		E1 成员;
 
-	公开:
+	public:
 
 	};
 
-公开:
+public:
 	有向图& 构造() {
-		返回 本体;
+		return (*this);
 	}
 
 	void 析构() {
 
 	}
 
-公开:
-	有向图& 复制构造(只读 有向图 &其他实例) {
-		返回 本体;
+public:
+	有向图& 复制构造(const 有向图 &其他实例) {
+		return (*this);
 	}
 
 	有向图& 移动构造(有向图 &&其他实例) {
-		返回 本体;
+		return (*this);
 	}
 };
 

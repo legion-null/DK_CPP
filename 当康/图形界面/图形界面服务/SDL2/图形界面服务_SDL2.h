@@ -2,28 +2,28 @@
 
 #include "图形界面/图形界面服务/图形界面服务.h"
 
-命名空间 当康 {
-命名空间 图形界面 {
+namespace 当康 {
+namespace 图形界面 {
 
-类 图形界面服务_SDL2: 继承 图形界面服务 {
+class 图形界面服务_SDL2: public 图形界面服务 {
 抽象类声明(图形界面服务_SDL2)
 
-保护:
-	类 SDL2图形界面服务相关数据 *SDL2服务 = 空指针;
+protected:
+	class SDL2图形界面服务相关数据 *SDL2服务 = nullptr;
 
-公开:
+public:
 	图形界面服务_SDL2& 构造();
 	void 析构();
 
-公开:
-	图形界面服务_SDL2& 复制构造(只读 图形界面服务_SDL2 &其他实例);
+public:
+	图形界面服务_SDL2& 复制构造(const 图形界面服务_SDL2 &其他实例);
 	图形界面服务_SDL2& 移动构造(图形界面服务_SDL2 &&其他实例);
 
-保护:
-	友元 类 屏幕_SDL2;
-	友元 类 鼠标_SDL2;
-	友元 类 键盘_SDL2;
-	友元 类 触摸板_SDL2;
+protected:
+	friend class 屏幕_SDL2;
+	friend class 鼠标_SDL2;
+	friend class 键盘_SDL2;
+	friend class 触摸板_SDL2;
 };
 
 }

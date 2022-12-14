@@ -2,35 +2,35 @@
 
 #include <基础类/对象/对象.h>
 
-命名空间 当康 {
-命名空间 模板容器 {
+namespace 当康 {
+namespace 模板容器 {
 
-模板<类 E>
-模板类 迭代器: 继承 基础类::对象 {
+template<class E>
+class 迭代器: public 基础类::对象 {
 模板声明(迭代器)
 
-公开:
+public:
 	迭代器& 构造() {
-		返回 本体;
+		return (*this);
 	}
 
 	void 析构() {
 
 	}
 
-公开:
-	迭代器& 复制构造(只读 迭代器 &其他实例) {
-		返回 本体;
+public:
+	迭代器& 复制构造(const 迭代器 &其他实例) {
+		return (*this);
 	}
 
 	迭代器& 移动构造(迭代器 &&其他实例) {
-		返回 本体;
+		return (*this);
 	}
 
-公开:
-	虚函数 bool 存在下个成员() = 0;
-	虚函数 E& 下个成员() = 0;
-	虚函数 void 删除当前成员() = 0;
+public:
+	virtual bool 存在下个成员() = 0;
+	virtual E& 下个成员() = 0;
+	virtual void 删除当前成员() = 0;
 
 };
 

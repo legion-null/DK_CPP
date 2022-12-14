@@ -2,18 +2,18 @@
 
 #include "图形界面/图形界面服务/图形界面服务.h"
 
-命名空间 当康 {
-命名空间 图形界面 {
+namespace 当康 {
+namespace 图形界面 {
 
-类 图形界面服务_Linux: 继承 图形界面服务 {
+class 图形界面服务_Linux: public 图形界面服务 {
 抽象类声明(图形界面服务_Linux)
 
-公开:
+public:
 	图形界面服务_Linux& 构造();
 	void 析构();
 
-公开:
-	图形界面服务_Linux& 复制构造(只读 图形界面服务_Linux &其他实例);
+public:
+	图形界面服务_Linux& 复制构造(const 图形界面服务_Linux &其他实例);
 	图形界面服务_Linux& 移动构造(图形界面服务_Linux &&其他实例);
 };
 

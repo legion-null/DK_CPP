@@ -2,18 +2,18 @@
 
 #include "定义.h"
 
-命名空间 当康 {
+namespace 当康 {
 
-模板<类 E>
+template<class E>
 void 交换(E &a, E &b) {
 	E temp = a;
 	a = b;
 	b = temp;
 }
 
-模板<类 E>
-void 复制(只读 E *源, E *目标, i32 元素大小, i32 元素个数) {
-	只读 u8 *p1 = (只读 u8*) 源;
+template<class E>
+void 复制(const E *源, E *目标, i32 元素大小, i32 元素个数) {
+	const u8 *p1 = (const u8*) 源;
 	u8 *p2 = (u8*) 目标;
 
 	for (i32 i = 0; i < 元素个数; i++) {
@@ -25,20 +25,20 @@ void 复制(只读 E *源, E *目标, i32 元素大小, i32 元素个数) {
 	}
 }
 
-模板<类 E>
-void 复制(只读 E *源, E *目标, i32 元素个数) {
-	复制(源, 目标, 取字节数(E), 元素个数);
+template<class E>
+void 复制(const E *源, E *目标, i32 元素个数) {
+	复制(源, 目标, sizeof(E), 元素个数);
 }
 
-模板<类 E>
-void 复制(只读 E *源, E *目标) {
+template<class E>
+void 复制(const E *源, E *目标) {
 	复制(源, 目标, 1);
 }
 
-模板<类 E>
+template<class E>
 void 移动(E *源, E *目标, i32 元素个数) {
 	复制(源, 目标, 元素个数);
-	删除[] 源;
+	delete[] 源;
 }
 
 }

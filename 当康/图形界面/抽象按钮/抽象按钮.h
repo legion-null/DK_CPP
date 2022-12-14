@@ -2,34 +2,33 @@
 
 #include "图形界面/容器/容器.h"
 
-命名空间 当康 {
-命名空间 图形界面 {
+namespace 当康 {
+namespace 图形界面 {
 
-抽象类 抽象按钮: 继承 容器 {
+class 抽象按钮: public 容器 {
 抽象类声明(抽象按钮)
 
-保护:
+protected:
 	i8 按下 :1;
 	i8 回弹 :1;
 
-公开:
+public:
 	抽象按钮& 构造();
 	void 析构();
 
-公开:
-	抽象按钮& 复制构造(只读 抽象按钮 &其他实例);
+public:
+	抽象按钮& 复制构造(const 抽象按钮 &其他实例);
 	抽象按钮& 移动构造(抽象按钮 &&其他实例);
 
-公开:
-	bool 获取按下() 只读;
+public:
+	bool 获取按下() const;
 	void 设置按下(bool 按下);
-	
-公开:
-	bool 获取回弹() 只读;
+
+public:
+	bool 获取回弹() const;
 	void 设置回弹(bool 回弹);
 
-公开:
-
+public:
 
 };
 

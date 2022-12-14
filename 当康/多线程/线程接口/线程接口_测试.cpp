@@ -1,27 +1,27 @@
 #include "当康.h"
 
-引入 当康;
+using namespace 当康;
 
-引入 当康::基础类;
-引入 当康::包装类;
-引入 当康::开发者;
+using namespace 当康::基础类;
+using namespace 当康::包装类;
+using namespace 当康::开发者;
 
-引入 当康::多线程;
+using namespace 当康::多线程;
 
-类 A: 继承 对象, 虚继承 线程接口 {
-公开:
+class A: public 对象, virtual public 线程接口 {
+public:
 	i32 n = 0;
 
 	A(i32 n) {
-		本元->n = n;
+		this->n = n;
 	}
 
 	void* 运行() {
-		while (真) {
+		while (true) {
 			日志::格式化打印日志(日志::一般信息, "n = %d\n", n);
 			线程::睡眠(1);
 		}
-		返回 0;
+		return 0;
 	}
 };
 
@@ -43,5 +43,5 @@ i32 多线程_线程接口_测试(i32 参数个数, c8 **参数列表) {
 
 	线程::睡眠(10);
 
-	返回 0;
+	return 0;
 }

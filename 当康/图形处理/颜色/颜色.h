@@ -2,14 +2,14 @@
 
 #include "基础类/对象/对象.h"
 
-命名空间 当康 {
-命名空间 图形处理 {
+namespace 当康 {
+namespace 图形处理 {
 
-类 颜色: 继承 基础类::对象 {
+class 颜色: public 基础类::对象 {
 类声明(颜色)
 
-公开:
-	枚举 典型颜色 : i32 {
+public:
+	enum 典型颜色 : i32 {
 		黑色 = 0x00000000, // Black
 		昏灰色 = 0x00696969, // Dim Gray
 		灰色 = 0x00808080, // Gray
@@ -261,91 +261,91 @@
 
 	};
 
-保护:
-	结构体 RGB555 {
+protected:
+	struct RGB555 {
 		i32 :17;
 		i32 r :5;
 		i32 g :5;
 		i32 b :5;
-	}__attribute__ ((packed));
+	} __attribute__ ((packed));
 
-	结构体 RGB888 { // 默认数据类型
+	struct RGB888 { // 默认数据类型
 		i8 :8;
 		i8 r;
 		i8 g;
 		i8 b;
-	}__attribute__ ((packed));
+	} __attribute__ ((packed));
 
-	结构体 ARGB8888 {
+	struct ARGB8888 {
 		i8 a;
 		i8 r;
 		i8 g;
 		i8 b;
-	}__attribute__ ((packed));
+	} __attribute__ ((packed));
 
-	共用体 颜色数据 {
+	union 颜色数据 {
 		i32 值;
-		结构体 RGB555 RGB555;
-		结构体 RGB888 RGB888;
-		结构体 ARGB8888 ARGB8888;
-	}__attribute__ ((packed));
+		struct RGB555 RGB555;
+		struct RGB888 RGB888;
+		struct ARGB8888 ARGB8888;
+	} __attribute__ ((packed));
 
-保护:
-	共用体 颜色数据 颜色数据;
+protected:
+	union 颜色数据 颜色数据;
 
-公开:
+public:
 	颜色(i32 颜色值) {
 		构造(颜色值);
 	}
 
-	颜色& 操作符 =(i32 颜色值) {
-		返回 构造(颜色值);
+	颜色& operator =(i32 颜色值) {
+		return 构造(颜色值);
 	}
 
-公开:
+public:
 	颜色& 构造();
 	void 析构();
 
-公开:
+public:
 	颜色& 构造(i32 颜色值);
 
-公开:
-	颜色& 复制构造(只读 颜色 &其他实例);
+public:
+	颜色& 复制构造(const 颜色 &其他实例);
 	颜色& 移动构造(颜色 &&其他实例);
 
-公开:
-	i32 获取颜色值() 只读;
+public:
+	i32 获取颜色值() const;
 	void 设置颜色值(i32 颜色值);
 
-公开:
+public:
 	u8 获取R();
 	u8 获取G();
 	u8 获取B();
 
 	void 获取RGB(u8 &R, u8 &G, u8 &B);
 
-公开:
+public:
 	void 设置R(u8 R);
 	void 设置G(u8 G);
 	void 设置B(u8 B);
 
 	void 设置RGB(u8 R, u8 G, u8 B);
 
-公开:
+public:
 	f32 获取r();
 	f32 获取g();
 	f32 获取b();
 
 	void 获取rgb(f32 &r, f32 &g, f32 &b);
 
-公开:
+public:
 	void 设置r(f32 r);
 	void 设置g(f32 g);
 	void 设置b(f32 b);
 
 	void 设置rgb(f32 r, f32 g, f32 b);
 
-公开:
+public:
 
 }
 ;

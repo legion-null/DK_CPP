@@ -2,43 +2,43 @@
 
 #include "基础类/对象/对象.h"
 
-命名空间 当康 {
-命名空间 图形界面 {
+namespace 当康 {
+namespace 图形界面 {
 
-类 组件;
-类 容器;
+class 组件;
+class 容器;
 
-类 标签;
+class 标签;
 
-抽象类 主题: 继承 基础类::对象 {
+class 主题: public 基础类::对象 {
 抽象类声明(主题)
 
-公开:
-	静态 只读 主题 *简易主题;
-	静态 只读 主题 *CDE主题;
-	静态 只读 主题 *Windows主题;
-	静态 只读 主题 *Flat主题;
+public:
+	static const 主题 *简易主题;
+	static const 主题 *CDE主题;
+	static const 主题 *Windows主题;
+	static const 主题 *Flat主题;
 
-公开:
-	静态 主题 *默认主题;
+public:
+	static 主题 *默认主题;
 
-公开:
+public:
 	主题& 构造();
 	void 析构();
 
-公开:
-	主题& 复制构造(只读 主题 &其他实例);
+public:
+	主题& 复制构造(const 主题 &其他实例);
 	主题& 移动构造(主题 &&其他实例);
 
-保护:
-	虚函数 void 绘制边框(图形处理::画笔 *画笔, 组件 *当前组件) = 0;
-	虚函数 void 绘制背景(图形处理::画笔 *画笔, 组件 *当前组件) = 0;
+protected:
+	virtual void 绘制边框(图形处理::画笔 *画笔, 组件 *当前组件) = 0;
+	virtual void 绘制背景(图形处理::画笔 *画笔, 组件 *当前组件) = 0;
 
-公开:
+public:
 	void 绘制框架(图形处理::画笔 *画笔, 组件 *当前组件);
 
-公开:
-	虚函数 void 绘制标签(图形处理::画笔 *画笔, 标签 *当前组件) = 0;
+public:
+	virtual void 绘制标签(图形处理::画笔 *画笔, 标签 *当前组件) = 0;
 };
 
 }

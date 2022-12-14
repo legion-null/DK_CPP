@@ -1,28 +1,28 @@
 #include "当康.h"
 
-引入 当康;
+using namespace 当康;
 
-引入 当康::基础类;
-引入 当康::包装类;
-引入 当康::开发者;
+using namespace 当康::基础类;
+using namespace 当康::包装类;
+using namespace 当康::开发者;
 
-引入 当康::多线程;
+using namespace 当康::多线程;
 
-类 测试线程: 继承 线程 {
-公开:
+class 测试线程: public 线程 {
+public:
 	i32 n = 0;
 
 	测试线程(i32 n) {
-		本元->n = n;
+		this->n = n;
 	}
 
-	虚函数 void* 运行() 覆盖 {
-		while (真) {
+	virtual void* 运行() override {
+		while (true) {
 			日志::格式化打印日志(日志::一般信息, "n = %d\n", n);
 			线程::睡眠(1);
 		}
 
-		返回 空指针;
+		return nullptr;
 	}
 };
 
@@ -40,6 +40,6 @@ i32 多线程_线程_测试(i32 参数个数, c8 **参数列表) {
 
 	线程::睡眠(10);
 
-	返回 0;
+	return 0;
 }
 

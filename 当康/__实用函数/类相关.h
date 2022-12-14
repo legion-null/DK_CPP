@@ -2,18 +2,18 @@
 
 #include "定义.h"
 
-命名空间 当康 {
+namespace 当康 {
 
-命名空间 基础类 {
-类 对象;
+namespace 基础类 {
+class 对象;
 }
 
-模板<类 E, 类 F>
+template<class E, class F>
 bool 对象属于类型(F *对象) {
 	if (对象->获取类全名() == E::返回类全名())
-		返回 真;
+		return true;
 	else
-		返回 假;
+		return false;
 }
 
 }
