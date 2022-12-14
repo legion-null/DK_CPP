@@ -9,7 +9,7 @@ class 图形界面服务_SDL2: public 图形界面服务 {
 抽象类声明(图形界面服务_SDL2)
 
 protected:
-	class SDL2图形界面服务相关数据 *SDL2服务 = nullptr;
+	struct SDL2图形界面服务相关数据 *SDL2服务 = nullptr;
 
 public:
 	图形界面服务_SDL2& 构造();

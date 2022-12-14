@@ -21,7 +21,7 @@ namespace 图形界面 {
 	// 初始化屏幕
 	this->当前屏幕 = new 屏幕_SDL2(this);
 	// 初始化鼠标
-	this->当前鼠标 = new 鼠标_SDL2();
+	this->当前鼠标 = new 鼠标_SDL2(this);
 	// 初始化键盘
 	// 本元->当前键盘 = 创建 键盘_SDL2();
 	// 初始化触摸板

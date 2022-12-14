@@ -4,71 +4,70 @@ using namespace 当康::基础类;
 using namespace 当康::包装类;
 using namespace 当康::开发者;
 
-#include "../SDL2图形界面服务相关.h"
+#include "../X11图形界面服务相关.h"
 
 namespace 当康 {
 namespace 图形界面 {
 
-类定义(当康::图形界面::鼠标_SDL2)
+类定义(当康::图形界面::鼠标_X11)
 
-鼠标_SDL2& 鼠标_SDL2::构造() {
-	if (SDL2事件 == nullptr)
-		SDL2事件 = new SDL2事件相关数据();
-
-	::SDL_Init(SDL_INIT_EVENTS);
+鼠标_X11& 鼠标_X11::构造() {
+	if (X11服务 == nullptr)
+		X11服务 = new X11图形界面服务相关数据();
 
 	return (*this);
 }
 
-void 鼠标_SDL2::析构() {
+void 鼠标_X11::析构() {
 
 }
 
-鼠标_SDL2& 鼠标_SDL2::构造(图形界面服务_SDL2 *服务) {
-	SDL2事件 = (SDL2事件相关数据*) &(服务->SDL2服务->事件);
-	return 构造();
-}
-
-鼠标_SDL2& 鼠标_SDL2::复制构造(const 鼠标_SDL2 &其他实例) {
-	throw 异常("鼠标_SDL2:复制构造方法不存在！\n"); // 默认操作，实现复制构造方法需将其删除
+鼠标_X11& 鼠标_X11::构造(图形界面服务_X11 *服务) {
+	X11服务 = 服务->X11服务;
 
 	return (*this);
 }
 
-鼠标_SDL2& 鼠标_SDL2::移动构造(鼠标_SDL2 &&其他实例) {
-	throw 异常("鼠标_SDL2:移动构造方法不存在！\n"); // 默认操作，实现移动构造方法需将其删除
+鼠标_X11& 鼠标_X11::复制构造(const 鼠标_X11 &其他实例) {
+	throw 异常("鼠标_X11:复制构造方法不存在！\n"); // 默认操作，实现复制构造方法需将其删除
 
 	return (*this);
 }
 
-输入事件* 鼠标_SDL2::上报输入事件() {
-	::SDL_Event &e = SDL2事件->事件;
+鼠标_X11& 鼠标_X11::移动构造(鼠标_X11 &&其他实例) {
+	throw 异常("鼠标_X11:移动构造方法不存在！\n"); // 默认操作，实现移动构造方法需将其删除
+
+	return (*this);
+}
+
+输入事件* 鼠标_X11::上报输入事件() {
+	::XEvent &e = X11服务->事件;
 	鼠标事件 *事件 = new 鼠标事件();
 
-	::SDL_PollEvent(&e);
+	::XNextEvent(X11服务->显示设备, &e);
 
-	if (e.type == SDL_MOUSEMOTION) {
-		当前状态.位置.设置位置(e.motion.x, e.motion.y);
+	if (e.type == MotionNotify) {
+		当前状态.位置.设置位置(e.xmotion.x, e.xmotion.y);
 		if (当前状态.左键按下 == false and 当前状态.中键按下 == false and 当前状态.右键按下 == false) {
 			当前状态.类型 = 鼠标事件::移动;
 		} else {
 			当前状态.类型 = 鼠标事件::拖动;
 		}
-	} else if (e.type == SDL_MOUSEBUTTONDOWN) {
-		if (e.button.button == 1) {
+	} else if (e.type == ButtonPress) {
+		if (e.xbutton.button == 1) {
 			当前状态.左键按下 = true;
-		} else if (e.button.button == 2) {
+		} else if (e.xbutton.button == 2) {
 			当前状态.中键按下 = true;
-		} else if (e.button.button == 3) {
+		} else if (e.xbutton.button == 3) {
 			当前状态.右键按下 = true;
 		}
 		当前状态.类型 = 鼠标事件::按下;
-	} else if (e.type == SDL_MOUSEBUTTONUP) {
-		if (e.button.button == 1) {
+	} else if (e.type == ButtonRelease) {
+		if (e.xbutton.button == 1) {
 			当前状态.左键按下 = false;
-		} else if (e.button.button == 2) {
+		} else if (e.xbutton.button == 2) {
 			当前状态.中键按下 = false;
-		} else if (e.button.button == 3) {
+		} else if (e.xbutton.button == 3) {
 			当前状态.右键按下 = false;
 		}
 		if (当前状态.类型 == 鼠标事件::释放) {
@@ -76,7 +75,7 @@ void 鼠标_SDL2::析构() {
 		} else {
 			当前状态.类型 = 鼠标事件::释放;
 		}
-	} else if (e.type == SDL_MOUSEWHEEL) {
+	} else if (e.type == MotionNotify) {
 		当前状态.类型 = 鼠标事件::滚动;
 	} else {
 		delete 事件;
@@ -99,4 +98,3 @@ void 鼠标_SDL2::析构() {
 
 }
 }
-
