@@ -12,8 +12,8 @@ namespace 图形界面 {
 类定义(当康::图形界面::鼠标_SDL2)
 
 鼠标_SDL2& 鼠标_SDL2::构造() {
-	if (SDL2事件 == nullptr)
-		SDL2事件 = new SDL2事件相关数据();
+	if (SDL2服务 == nullptr)
+		SDL2服务 = new SDL2图形界面服务相关数据();
 
 	::SDL_Init(SDL_INIT_EVENTS);
 
@@ -25,7 +25,7 @@ void 鼠标_SDL2::析构() {
 }
 
 鼠标_SDL2& 鼠标_SDL2::构造(图形界面服务_SDL2 *服务) {
-	SDL2事件 = (SDL2事件相关数据*) &(服务->SDL2服务->事件);
+	SDL2服务 = 服务->SDL2服务;
 	return 构造();
 }
 
@@ -42,7 +42,7 @@ void 鼠标_SDL2::析构() {
 }
 
 输入事件* 鼠标_SDL2::上报输入事件() {
-	::SDL_Event &e = SDL2事件->事件;
+	::SDL_Event &e = SDL2服务->事件;
 	鼠标事件 *事件 = new 鼠标事件();
 
 	::SDL_PollEvent(&e);

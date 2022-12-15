@@ -9,7 +9,7 @@ class 鼠标_SDL2: public 鼠标 {
 类声明(鼠标_SDL2)
 
 protected:
-	struct SDL2事件相关数据 *SDL2事件 = nullptr;
+	struct SDL2图形界面服务相关数据 *SDL2服务 = nullptr;
 
 public:
 	鼠标_SDL2(图形界面服务_SDL2 *服务) {

@@ -9,7 +9,7 @@ class 屏幕_SDL2: public 屏幕 {
 类声明(屏幕_SDL2)
 
 protected:
-	struct SDL2屏幕相关数据 *SDL2屏幕 = nullptr;
+	struct SDL2图形界面服务相关数据 *SDL2服务 = nullptr;
 	基础类::字符串 屏幕名称;
 
 public:

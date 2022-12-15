@@ -32,3 +32,4 @@ protected:
 #include "屏幕/屏幕_X11.h"
 
 #include "鼠标/鼠标_X11.h"
+#include "键盘/键盘_X11.h"
